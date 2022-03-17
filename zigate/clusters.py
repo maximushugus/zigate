@@ -39,6 +39,7 @@ LOGGER = logging.getLogger('zigate')
 #             0x0406: 'Measurement: Occupancy Sensing',
 #             0x0500: 'Security & Safety: IAS Zone',
 #             0x0702: 'Smart Energy: Metering',
+#             0x0B04: 'Measurement: Electric measurement',
 #             0x0B05: 'Misc: Diagnostics',
 #             0x1000: 'ZLL: Commissioning',
 #             0xFF01: 'Xiaomi private',
@@ -626,10 +627,20 @@ class C0500(Cluster):
 class C0702(Cluster):
     cluster_id = 0x0702
     type = 'Metering'
-    attributes_def = {0x0000: {'name': 'current_delivered', 'value': 'value',
-                               'type': float},
+    attributes_def = {0x0000: {'name': 'index_base', 'value': 'value',
+                               'type': int},
                       0x0400: {'name': 'instant_power', 'value': 'value',
                                'type': float},
+                      }
+   
+@register_cluster
+class C0B04(Cluster):
+    cluster_id = 0x0B04
+    type = 'Metering'
+    attributes_def = {0x0508: {'name': 'courant_efficace', 'value': 'value',
+                               'type': int},
+                      0x050A: {'name': 'intensite_maximale', 'value': 'value',
+                               'type': int},
                       }
 
 
