@@ -628,7 +628,7 @@ class C0702(Cluster):
     cluster_id = 0x0702
     type = 'Metering'
     attributes_def = {0x0000: {'name': 'index_base', 'value': 'value',
-                               'unit': 'Wh', 'type': int},
+                               'unit': 'Wh', 'type': float},
                       0x0400: {'name': 'instant_power', 'value': 'value',
                                'type': float},
                       }
