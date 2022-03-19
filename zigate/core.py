@@ -2700,7 +2700,16 @@ class Device(object):
                 self._zigate.bind_addr(self.addr, endpoint_id, 0x0702)
                 self._zigate.reporting_request(self.addr,
                                                endpoint_id,
-                                               0x0702, (0x0000, 0x25))
+                                               0x0702, (0x0000, 0x29))
+            if 0x0B04 in endpoint['in_clusters']:
+                LOGGER.debug('bind for cluster 0x0B04')
+                self._zigate.bind_addr(self.addr, endpoint_id, 0x0B04)
+                self._zigate.reporting_request(self.addr,
+                                               endpoint_id,
+                                               0x0B04, (0x0508, 0x29))
+                self._zigate.reporting_request(self.addr,
+                                               endpoint_id,
+                                               0x0B04, (0x050F, 0x29))
 
     @staticmethod
     def from_json(data, zigate_instance=None):
@@ -2927,6 +2936,12 @@ class Device(object):
                     if k not in to_read:
                         to_read[k] = []
                     to_read[k].append(0x0000)
+                if 0x0B04 in endpoint['in_clusters']:
+                    k = (endpoint_id, 0x0B04)
+                    if k not in to_read:
+                        to_read[k] = []
+                    to_read[k].append(0x0508)
+                    to_read[k].append(0x050F)
 
         for k, attributes in to_read.items():
             endpoint, cluster = k
