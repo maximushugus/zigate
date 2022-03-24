@@ -626,7 +626,7 @@ class C0500(Cluster):
 @register_cluster
 class C0702(Cluster):
     cluster_id = 0x0702
-    type = 'Metering'
+    type = 'Metering: Consumption'
     attributes_def = {0x0000: {'name': 'index_base', 'value': 'int(value, 16)/1000',
                                'unit': 'kWh', 'type': int},
                       0x0400: {'name': 'instant_power', 'value': 'value',
@@ -636,7 +636,7 @@ class C0702(Cluster):
 @register_cluster
 class C0B04(Cluster):
     cluster_id = 0x0B04
-    type = 'Metering'
+    type = 'Metering: Power'
     attributes_def = {0x0508: {'name': 'courant_efficace', 'value': 'value',
                                'unit': 'A', 'type': int},
                       0x050F: {'name': 'puissance_apparante', 'value': 'value',
