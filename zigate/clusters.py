@@ -638,9 +638,9 @@ class C0B04(Cluster):
     cluster_id = 0x0B04
     type = 'Metering: Power'
     attributes_def = {0x0508: {'name': 'courant_efficace', 'value': 'value',
-                               'unit': 'A', 'type': float},
+                               'unit': 'A', 'type': int},
                       0x050F: {'name': 'puissance_apparante', 'value': 'value',
-                               'unit': 'W', 'type': float},
+                               'unit': 'W', 'type': int},
                       }
 
 
