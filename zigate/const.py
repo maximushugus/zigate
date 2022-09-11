@@ -69,8 +69,8 @@ DATA_TYPE = {0x00: None,
              0x21: 'H',  # uint16
              0x22: 'I',  # uint24
              0x23: 'I',  # uint32
-             0x24: 'I',  # uint40
-             0x25: 'I',  # uint48
+             #0x24: 'I',  # uint40
+             #0x25: 'I',  # uint48
              0x28: 'b',  # int8
              0x29: 'h',  # int16
              0x2a: 'i',  # int24
